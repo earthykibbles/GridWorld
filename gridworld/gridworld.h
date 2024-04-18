@@ -61,10 +61,11 @@ public:
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<int> dis_row(0, rows-1);
 		std::uniform_int_distribution<int> dis_col(0, columns-1);
-		endPoint = { dis_row(gen), dis_col(gen) };
+		//endPoint = { dis_row(gen), dis_col(gen) };
+		endPoint = { 3,3};
 		
 		state_values[std::get<0>(endPoint)][std::get<1>(endPoint)] = 1;
-		burn = get_next_state(std::get<0>(endPoint), std::get<1>(endPoint), Action::DOWN);
+		burn = get_next_state(std::get<0>(endPoint), std::get<1>(endPoint), Action::UP);
 		state_values[std::get<0>(burn)][std::get<1>(burn)] = -1;
 		reward_values[std::get<0>(endPoint)][std::get<1>(endPoint)] = 1;
 	}
